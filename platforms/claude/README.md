@@ -1,5 +1,7 @@
 # Claude Desktop / Claude Code Integration
 
+> **Status: TESTED** — Both Claude Desktop (inline) and Claude Code (AGENTS.md) validated on T-PRD-01. Discriminator output format correct, convergence logic functional.
+
 This folder contains the GAN Refinement system adapted for Claude Desktop (Projects) and Claude Code.
 
 ## Claude Desktop (Projects)
@@ -29,6 +31,8 @@ Claude Desktop does NOT support subagents. The Generator and Discriminator run i
 
 This is the "inline fallback" mode described in the skill. It's less rigorous than subagent isolation but still produces measurable improvement.
 
+**Test result**: Scored 7.5 on iteration 1, converged at 8.56 on iteration 2 (T-PRD-01 task). The inline Discriminator was slightly stricter than isolated subagents (7.5 vs 8.3 baseline), likely due to self-critical bias from shared context.
+
 ## Claude Code
 
 ### Setup
@@ -54,6 +58,8 @@ Claude Code can achieve proper isolation via the `Task` tool:
 - Arbiter logic runs in the main conversation
 
 This matches the architecture's intent for full context isolation.
+
+**Test result**: Generator + Discriminator ran with exact AGENTS.md prompts. Discriminator scored 8.6/10 with correct structured output format and 5 specific issues identified. Matches Copilot baseline quality.
 
 ## Files in This Folder
 

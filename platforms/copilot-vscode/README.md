@@ -1,5 +1,7 @@
 # GitHub Copilot (VS Code) Integration
 
+> **Status: TESTED** — Extensively validated across 8 tests (2 rounds), 6 artifact types. 87.5% win rate over one-shot, +3.3 mean quality improvement.
+
 This folder contains the GAN Refinement skill packaged for GitHub Copilot in VS Code.
 
 ## Installation

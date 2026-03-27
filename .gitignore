@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+
+# Test archive (generated artifacts from validation rounds)
+test-archive/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+~$*
+
+# Build outputs
+dist/
+build/
+
+# Environment
+.env
+.env.local
+
+# Python
+*.pyc
+.pytest_cache/
+
+# Temp
+*.tmp
+*.bak

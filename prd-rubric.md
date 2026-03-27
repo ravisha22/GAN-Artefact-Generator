@@ -9,7 +9,7 @@ The Generator MUST produce all of these sections. Missing sections = automatic s
 penalty on the relevant dimension.
 
 | Section | Maps to Priority | Hard Gate? |
-|---|---|---|
+| --- | --- | --- |
 | Problem Statement | Code Quality (clarity) | No |
 | User Personas | Ease of Use | No |
 | User Stories / Jobs to Be Done | Code Quality (completeness) | No |
@@ -27,13 +27,14 @@ penalty on the relevant dimension.
 ### Problem Statement (weight in Code Quality dimension)
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 1-3 | Solution-first thinking, no clear problem articulation, or problem is actually a feature request |
 | 4-6 | Problem exists but is vague ("users struggle with X"), no data or evidence |
 | 7-8 | Specific problem with evidence (user research, metrics, support tickets), quantified impact |
 | 9-10 | Problem + root cause analysis, quantified opportunity size, strategic alignment articulated |
 
 **Discriminator should flag:**
+
 - "We need to build X" without explaining why → score ≤ 4
 - Problem defined in terms of the solution → score ≤ 5
 - No user evidence → cap at 6
@@ -41,7 +42,7 @@ penalty on the relevant dimension.
 ### User Personas
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 1-3 | No personas, or generic "users" |
 | 4-6 | Named personas but no behavioral differentiation |
 | 7-8 | Distinct personas with goals, pain points, and usage context |
@@ -50,7 +51,7 @@ penalty on the relevant dimension.
 ### Success Metrics
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 1-3 | No metrics, or vanity metrics only ("increase engagement") |
 | 4-6 | Metrics present but not measurable or no baselines |
 | 7-8 | SMART metrics with baselines and targets, instrumentation plan noted |
@@ -63,7 +64,7 @@ inherently defective).
 ### Scope Definition
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 1-3 | No scope boundaries, or scope = "everything" |
 | 4-6 | In-scope defined but out-of-scope missing or vague |
 | 7-8 | Clear in/out scope with rationale for exclusions |
@@ -75,7 +76,7 @@ Threshold hard gate (unbounded scope = project risk).
 ### Functional Requirements
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 1-3 | Feature list without user context or acceptance criteria |
 | 4-6 | Requirements present but mixed abstraction levels, some missing acceptance criteria |
 | 7-8 | Structured requirements with user stories, acceptance criteria, and priority (MoSCoW or similar) |
@@ -84,7 +85,7 @@ Threshold hard gate (unbounded scope = project risk).
 ### Edge Cases & Error States
 
 | Score | Criteria |
-|---|---|
+| --- | --- |
 | 1-3 | Not mentioned |
 | 4-6 | Some edge cases listed but no handling strategy |
 | 7-8 | Edge cases identified with expected behavior and graceful degradation |
@@ -116,6 +117,7 @@ These are common PM writing mistakes. Flag any of these and deduct from the rele
 ## PRD Generator Voice Guidelines
 
 The Generator should write PRDs in this voice:
+
 - Problem-first, outcome-oriented
 - Specific over vague ("reduce page load from 3.2s to <1s" not "make it faster")
 - User-centric framing (who benefits, how)
@@ -124,6 +126,7 @@ The Generator should write PRDs in this voice:
 - No implementation bias unless a constraint exists
 
 The Discriminator should penalize:
+
 - Marketing language in a product spec
 - Passive voice hiding ownership ("it was decided" — by whom?)
 - Weasel words ("significantly", "greatly", "much better")

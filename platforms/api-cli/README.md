@@ -1,6 +1,8 @@
 # API / CLI Orchestration
 
-This folder contains a standalone orchestration approach for running the GAN refinement loop via any OpenAI-compatible API (Azure OpenAI, OpenAI, Anthropic, local models).
+> **Status: IMPLEMENTED + UNIT TESTED** — Parser, convergence logic, and hard gate checks validated. API integration requires provider credentials to test end-to-end.
+
+This folder contains a standalone Python orchestrator for running the GAN refinement loop via any OpenAI-compatible API (Azure OpenAI, OpenAI, Anthropic, local models).
 
 ## How It Works
 
@@ -66,18 +68,23 @@ node gan-orchestrator.js --task "..." --dry-run
 
 ## Files
 
-- `gan-config.example.yaml` — Example configuration
+- `gan_orchestrator.py` — Complete orchestrator (config, API callers, parser, convergence, CLI)
+- `test_orchestrator.py` — Unit tests for parser and convergence logic
 - `README.md` — This file
 
 ## Implementation Note
 
-The orchestrator script is a reference design — not yet implemented. The architecture is:
+The orchestrator is fully implemented with:
 
-```
-gan-orchestrator.js
-├── loadRubric(profile) → reads .md files, builds prompt
-├── callGenerator(taskSpec, feedback?) → isolated API call
-├── callDiscriminator(artifact, rubric) → isolated API call
+- **OpenAI provider** — calls `/chat/completions` with Bearer auth
+- **Anthropic provider** — calls `/v1/messages` with `x-api-key` + `anthropic-version`
+- **Score parser** — regex extraction of all 8 dimensions, weighted avg, hard gates, convergence
+- **Convergence logic** — threshold check, hard gate enforcement, delta early-exit, best-of-N
+- **Token tracking** — reads `usage` from API responses, computes cost at $3/$15 per M
+- **Progress display** — per-iteration score bars, trajectory, final summary
+- **JSON results** — saves full run data to `gan-results-<timestamp>.json`
+
+Only dependency: `httpx` (`pip install httpx`)
 ├── parseScores(response) → extract structured scores
 ├── checkConvergence(scores, history) → CONVERGE/ITERATE/EXIT
 └── main loop with progress reporting
